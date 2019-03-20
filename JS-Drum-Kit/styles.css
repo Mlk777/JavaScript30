@@ -1,0 +1,104 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#table {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(
+    180.4deg,
+    rgba(9, 30, 61, 1) 45.3%,
+    rgba(95, 123, 190, 1) 279%
+  );
+}
+
+.controller {
+  height: 600px;
+  width: 450px;
+  display: grid;
+  align-content: start;
+  grid-gap: 5px;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "knob knob knob knob"
+    "screen screen screen screen"
+    "screen screen screen screen"
+    "pad pad pad pad"
+    "pad pad pad pad"
+    "pad pad pad pad";
+  border: 3px solid black;
+  border-radius: 2px;
+  box-shadow: 0px 0px 3px 3px;
+  overflow: hidden;
+  background: #16222a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #3a6073,
+    #16222a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #3a6073,
+    #16222a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.knob {
+  grid-area: knob;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.knob button {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  font-size: calc(20px + 0.5vw);
+  outline: none;
+}
+
+.screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: screen;
+  margin: 0 3px 0 3px;
+  border: 1px solid #3f51b5;
+  box-shadow: 0px 0px 0px 2px;
+  background: #000000eb;
+  color: white;
+  font-size: 3em;
+  font-style: oblique;
+}
+
+.pad {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 5px;
+  grid-area: pad;
+}
+
+.pad button {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: calc(25px + 0.5vw);
+  text-shadow: 0 0 5px black;
+  transition: all 0.07s;
+  outline: none;
+}
+
+.playing {
+  transform: scale(1.08);
+  border-color: blue;
+  box-shadow: 0 0 15px 5px blue;
+}

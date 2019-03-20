@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <div id="table">
+      <div class="controller">
+        <div class="knob">
+          <button disabled style="box-shadow: -1px 4px 5px 2px">I</button>
+          <button disabled style="box-shadow: 0px 4px 5px 2px">I</button>
+          <button disabled style="box-shadow: 0px 4px 5px 2px">I</button>
+          <button disabled style="box-shadow: 3px 4px 5px 2px">I</button>
+        </div>
+
+        <div class="screen"></div>
+        <div class="pad">
+          <button data-key="65">
+            <kbd>A</kbd>
+          </button>
+          <button data-key="83">
+            <kbd>S</kbd>
+          </button>
+          <button data-key="68">
+            <kbd>D</kbd>
+          </button>
+          <button data-key="70">
+            <kbd>F</kbd>
+          </button>
+          <button data-key="71">
+            <kbd>G</kbd>
+          </button>
+          <button data-key="72">
+            <kbd>H</kbd>
+          </button>
+          <button data-key="74">
+            <kbd>J</kbd>
+          </button>
+          <button data-key="75">
+            <kbd>K</kbd>
+          </button>
+          <button data-key="76">
+            <kbd>L</kbd>
+          </button>
+
+          <audio data-key="65" src="sounds/clap.wav"></audio>
+          <audio data-key="83" src="sounds/hihat.wav"></audio>
+          <audio data-key="68" src="sounds/kick.wav"></audio>
+          <audio data-key="70" src="sounds/openhat.wav"></audio>
+          <audio data-key="71" src="sounds/boom.wav"></audio>
+          <audio data-key="72" src="sounds/ride.wav"></audio>
+          <audio data-key="74" src="sounds/snare.wav"></audio>
+          <audio data-key="75" src="sounds/tom.wav"></audio>
+          <audio data-key="76" src="sounds/tink.wav"></audio>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.addEventListener("keydown", function(e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`button[data-key="${e.keyCode}"]`);
+        const screen = document.querySelector(".screen");
+        screen.innerHTML = "";
+        if (!audio) return;
+
+        let sound = audio.src
+          .match(/\w+(?=\.)/)
+          .toString()
+          .toUpperCase();
+        audio.currentTime = 0; //rewind to the start
+        audio.play();
+        screen.innerHTML = sound;
+        key.classList.add("playing");
+      });
+
+      function removeTransition(e) {
+        // Didn't understand this
+        if (e.propertyName !== "transform") return;
+        this.classList.remove("playing");
+      }
+
+      const keys = document.querySelectorAll(".pad button");
+      keys.forEach(key =>
+        key.addEventListener("transitionend", removeTransition)
+      );
+    </script>
+  </body>
+</html>
