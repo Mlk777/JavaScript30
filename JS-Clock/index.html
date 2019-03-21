@@ -54,21 +54,24 @@
       }
 
       function changeBackgroundOverTime(time) {
-        if (time >= 5 && time < 6) {
+        if (time >= 5 && time <= 6) {
           backgroundStyle.style.background =
             "url('https://stmed.net/sites/default/files/sunrise-wallpapers-28064-3773736.jpg') no-repeat center center";
           backgroundStyle.style.backgroundSize = "cover";
-        } else if (time > 7 && time <= 12) {
+        } else if (time >= 7 && time <= 12) {
           backgroundStyle.style.background =
             "url('http://eskipaper.com/images/morning-background-1.jpg') no-repeat center center";
           backgroundStyle.style.backgroundSize = "cover";
-        } else if (time > 13 && time < 18) {
+        } else if (time >= 13 && time <= 18) {
           backgroundStyle.style.background =
             "url('https://bobandsuewilliams.com/images/afternoon.jpg') no-repeat center center";
           backgroundStyle.style.backgroundSize = "cover";
-        } else if (time > 19 && time <= 4) {
+        } else if (time >= 19 && time <= 23) {
           backgroundStyle.style.background =
             "url('https://www.nps.gov/shen/learn/nature/images/20170922_BigMeadows_Night_DSC5591_mo.jpg?maxwidth=1200&maxheight=1200&autorotate=false') no-repeat center center";
+          backgroundStyle.style.backgroundSize = "cover";
+        } else {
+          ("url('https://www.nps.gov/shen/learn/nature/images/20170922_BigMeadows_Night_DSC5591_mo.jpg?maxwidth=1200&maxheight=1200&autorotate=false') no-repeat center center");
           backgroundStyle.style.backgroundSize = "cover";
         }
       }
